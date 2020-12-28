@@ -538,6 +538,3 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 	
 	
 }
-
-
-//add: Scheduled task instead of playermovement, leave event, arguments to commands, patch...
