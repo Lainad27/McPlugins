@@ -1,0 +1,17 @@
+name: trollSmp
+version: 1.0
+author: Lainad27
+main: me.lainad27.trollSmp.Main
+api-version: 1.16
+
+commands:
+  troll:
+    description: troll someone
+  leak:
+    description: leak someone's cords
+  endtoggle:
+    description: doesnt work.
+  togglepermatroll:
+    description: troll someone even if the server restarts
+  togglehebrew:
+    description: toggle hebrew in chat
