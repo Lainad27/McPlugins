@@ -1,6 +1,5 @@
 package me.lainad27.manhunt.listenerExec;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,13 +29,10 @@ import me.lainad27.manhunt.Main;
 
 
 
-
 public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 	
 	int Taskid;
-	
 	int speederTime = 10;
-	
 	boolean TaskInitialised = false;
 	
 	List<String> Hunters = new ArrayList<String>();
@@ -49,17 +45,22 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 
 	ArrayList<ArrayList<Integer>> Closes =  new ArrayList<ArrayList<Integer>>(); 
 	
-	
-	
-	
 	private Main plugin;
 	
+	/**
+	 * creates a new ManhuntListenerExecutor
+	 * @param plugin
+	 */
 	public ManhuntListenerExecutor(Main plugin) {
 		this.plugin = plugin;
 		
 		Bukkit.getPluginManager().registerEvents(this, plugin);
 	}
 	
+	/**
+	 * 
+	 * @param e
+	 */
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
@@ -106,11 +107,9 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 				
 				p.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + ("Tracking " + Tracked.getName()));
 			}
-
-		}
-		
-		
+		}	
 	}
+
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
 		if(Names.contains(e.getPlayer().getName())== false){
@@ -137,7 +136,6 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 	}
 	
 	/*
-	
 	@EventHandler
 	public void movement(PlayerMoveEvent e) {
 		Player hunter=e.getPlayer();
@@ -196,24 +194,21 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 				}
 				close=false;
 			}
-        
 		}
     }
 	*/
+
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent e) {
 		Player p= e.getPlayer();
 		
-		if (Hunters.contains(p.getName())){
+		if (Hunters.contains(p.getName())) {
 			p.getInventory().addItem(new ItemStack(Material.COMPASS));
-			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable()
-            {
-                public void run()
-                {
+			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+                public void run() {
                     p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 36000 * 20, 0, false, false));
                 }
-
-            }, (1));
+			}, (1));
 			Bukkit.getServer().broadcastMessage("The hunter " + p.getName() + " died!");
 			return;
 		}
@@ -520,7 +515,6 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 				    				speeder.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + ("Hunter " + hunterString + " is out of viewing distance!"));
 				    				Closes.get(Hunters.indexOf(hunterString)).set(Speeders.indexOf(speederString), 0);
 				    			}
-				            
 				    		}
 				        }
 				    }
@@ -529,12 +523,6 @@ public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 			}
 			return false;
 		}
-		
-		
 		return false;
 	}
-	
-	
-	
-	
 }
