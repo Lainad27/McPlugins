@@ -27,8 +27,6 @@ import org.bukkit.potion.PotionEffectType;
 
 import me.lainad27.manhunt.Main;
 
-
-
 public class ManhuntListenerExecutor implements CommandExecutor, Listener{
 	
 	int Taskid;
